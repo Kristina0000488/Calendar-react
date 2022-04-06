@@ -1,0 +1,20 @@
+{
+  "name": "calendar-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "cd server && node index.js",
+    "heroku-postbuild": "cd server && npm install && cd ../client && npm install --unsafe-perm && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kristina0000488/Calendar-react.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kristina0000488/Calendar-react/issues"
+  },
+  "homepage": "https://github.com/Kristina0000488/Calendar-react#readme"
+}
