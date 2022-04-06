@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { observer }         from 'mobx-react';
 
 import Events               from '../components/Events';
-import NotificationForTime from '../components/NotificationForTime';
+import NotificationForTime  from '../components/NotificationForTime';
 import eventsStore          from '../store/EventsStore';
 
 import '../styles/CommonEventsPage.scss';
@@ -18,7 +18,7 @@ class EventsPage extends Component {
                 { 
                     eventsStore.events &&  <Events 
                         eventsStore={eventsStore.events} 
-                        deleteEvent={(id) => eventsStore.deleteEvent(id)} />
+                        deleteEvent={ id => eventsStore.deleteEvent(id) } />
                 }
                 { eventsStore.events.length === 0 && <div>No events</div> }
                 <NotificationForTime />

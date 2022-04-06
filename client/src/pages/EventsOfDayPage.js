@@ -5,7 +5,7 @@ import { observer }         from 'mobx-react';
 
 import eventsStore          from '../store/EventsStore';
 import Events               from '../components/Events';
-import NotificationForTime from '../components/NotificationForTime';
+import NotificationForTime  from '../components/NotificationForTime';
 
 import '../styles/CommonEventsPage.scss';
 import '../styles/App.scss';
@@ -19,15 +19,17 @@ class EventsOfDayPage extends Component {
 
     render()
     {
+        const { year, month, day } = this.props;
+
         return (
             <div className='eventsOfDayContainer padding'>
                 <div className='titleField'>
                     <h2>Events of day</h2>
-                    <Link target="_blank" to={`/${this.props.year}/${this.props.month}/${this.props.day}/add`} >
+                    <Link target="_blank" to={`/${year}/${month}/${day}/add`} >
                         <Button variant="contained" color="primary">Add event</Button>
                     </Link>
                 </div>
-                <Events eventsStore={this.getEvents()} deleteEvent={(id) => eventsStore.deleteEvent(id)} />
+                <Events eventsStore={ this.getEvents() } deleteEvent={ id => eventsStore.deleteEvent(id) } />
                 <NotificationForTime />
             </div>
         )

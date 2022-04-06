@@ -7,17 +7,14 @@ import '../styles/Events.scss';
 
 
 class Events extends Component {
-    constructor(props)
-    {
-        super(props);
-    }
-    
     render()
     {
+        const { eventsStore, deleteEvent } = this.props;
+
         return (
           <>
             {
-                this.props.eventsStore && this.props.eventsStore.map((item, index) => {
+                eventsStore && eventsStore.map( (item, index) => {
                     return <div key={index} className='eventField'>
                         <span>{item.title}</span>
                         <div className='btnsField'>
@@ -26,14 +23,14 @@ class Events extends Component {
                                     Edit
                                 </Button>
                             </Link>
-                            <Button onClick={() => this.props.deleteEvent(item.id)}>
+                            <Button onClick={ _ => deleteEvent(item.id) }>
                                 Delete
                             </Button>
                         </div>
                     </div>
-                })
+                } )
             }
-            { !this.props.eventsStore && <div>No events</div> }
+            { !eventsStore && <div>No events</div> }
           </>
         )
     }

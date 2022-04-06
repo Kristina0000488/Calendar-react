@@ -74,6 +74,8 @@ class EditEventPage extends BasicPage {
 
     render()
     {
+        const { showingNotice } = this.state;
+        
         return (
             <div className='addEventContainer padding'>
                 <h2>Edit event</h2>
@@ -85,13 +87,13 @@ class EditEventPage extends BasicPage {
                     title={this._event.title}
                     setEventToStore={() => this.editEvent()}
                     titleBtn='Edit Event'
-                    onChangeTitle={(value) => this.setState({ title: value })}
-                    onChangeStartTime={(value) => this.setState({ startTime: value })}
-                    onChangeEndTime={(value) => this.setState({ endTime: value })}
-                    onChangeReminderTime={(value) => this.setState({ reminderTime: value })}
+                    onChangeTitle={ value => this.setState({ title: value })}
+                    onChangeStartTime={ value => this.setState({ startTime: value })}
+                    onChangeEndTime={ value => this.setState({ endTime: value })}
+                    onChangeReminderTime={ value => this.setState({ reminderTime: value })}
                 />
                 <NotificationForTime/>
-                <Notification showingNotice={this.state.showingNotice} value='Reminder successfully changed!' /> 
+                <Notification showingNotice={showingNotice} value='Reminder successfully changed!' /> 
             </div>
         )
     }

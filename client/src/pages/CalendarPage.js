@@ -6,7 +6,12 @@ import NotificationForTime  from '../components/NotificationForTime';
 import eventsStore          from '../store/EventsStore';
 
 
-class CalendarPage extends Component {
+class CalendarPage extends Component {    
+    getCalendarKey()
+    {
+        return JSON.stringify(eventsStore.events).replace(/^[a-zA-z0-9]+/gi, '');
+    }
+
     render() 
     {    
         return (
@@ -15,11 +20,6 @@ class CalendarPage extends Component {
                 { eventsStore.events && <Calendar events={eventsStore.events} key={this.getCalendarKey()}/> }
             </>
         )
-    }
-
-    getCalendarKey()
-    {
-        return JSON.stringify(eventsStore.events).replace(/^[a-zA-z0-9]+/gi, '');
     }
 }
 

@@ -9,52 +9,61 @@ import '../styles/FormEvent.scss';
 
 
 export default class FormEvent extends Component {  
-  constructor(props)
-  {
-    super(props);
-  }
-
   render()
   {
+    const { 
+      title='', 
+      onChangeTitle, 
+      startTime, 
+      onChangeStartTime, 
+      endTime, 
+      onChangeEndTime, 
+      reminderTime, 
+      onChangeReminderTime, 
+      reminderTimeList,
+      setEventToStore,
+      titleBtn
+    } = this.props;
+
     return (
       <form>
         <div className='formAddEvent'>
           <TextField    
-              defaultValue={this.props.title || ''}  
+              defaultValue={title}  
               id="standard-basic" 
               label="Title of event" 
               autoFocus  
               required 
-              onChange={(event) => this.props.onChangeTitle(event.target.value)}
+              onChange={ event => onChangeTitle(event.target.value) }
           />
           <InputTimeField 
               title='Starting time' 
-              defaultValue={this.props.startTime}
-              sendValue={(time) => this.props.onChangeStartTime(time)}
+              defaultValue={startTime}
+              sendValue={ time => onChangeStartTime(time) }
           />
           <InputTimeField 
               title='End time' 
-              defaultValue={this.props.endTime}
-              sendValue={(time) => this.props.onChangeEndTime(time)}
+              defaultValue={endTime}
+              sendValue={ time => onChangeEndTime(time) }
           />
           <TextField
             
             id="standard-select-currency"
             select
             label="Reminder time"
-            defaultValue={this.props.reminderTime}
-            onChange={(event) => this.props.onChangeReminderTime(event.target.value)} 
+            defaultValue={reminderTime}
+            onChange={ event => onChangeReminderTime(event.target.value) } 
             helperText="Please select your time"
           >
-            {this.props.reminderTimeList.map((value, index) => (
+            { reminderTimeList.map((value, index) => (
               <MenuItem key={index} value={value}>
                 {value}
               </MenuItem>
-            ))}
+            )) }
           </TextField>
         </div>
-        <Button variant="contained" color="primary" onClick={() => this.props.setEventToStore()}>
-          {this.props.titleBtn}
+        <Button variant="contained" color="primary" onClick={ _ => setEventToStore() }>
+          {titleBtn}
         </Button>
       </form>
     )

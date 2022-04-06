@@ -37,36 +37,39 @@ class Calendar extends Component {
     }
 
     render() 
-    {    
+    {
+        const { month, year } = this.state;
+        const { key, events }  = this.props;
+
         return (
-            <div className='padding' key={this.props.key}> 
+            <div className='padding' key={key}> 
                 { 
-                    this.state.month && this.state.year && <>
+                    month && year && <>
                         <div className='containerCalendar'>
                             <Link className='linkToEvents' target="_blank" to={`/events`}>
-                            <Button color="primary" size="large">Events</Button> 
+                                <Button color="primary" size="large">Events</Button> 
                             </Link>
                             <div className='inputsField'>
                                 <SelectList 
                                     title={'Years'} 
                                     defaultValue={date.getCurrentYear()} 
                                     data={date.getYears(2030)}
-                                    sendValue={(year) => this.setState({ year: year })}
+                                    sendValue={ year => this.setState({ year: year }) }
                                 />
                                 <SelectList 
                                     title={'Months'} 
                                     defaultValue={date.getCurrentMonth()} 
                                     data={date.getMonths()} 
-                                    sendValue={(month) => this.setState({ month: month })}
+                                    sendValue={ month => this.setState({ month: month }) }
                                 />
                             </div>
                         </div>
                         <DaysList 
-                            events={this.props.events}
-                            month={this.conversionMonthToDate(this.state.month)}
-                            year={this.state.year}
+                            events={events}
+                            month={this.conversionMonthToDate(month)}
+                            year={year}
                             data={
-                                date.getDays(this.state.year, this.conversionMonthToDate(this.state.month))
+                                date.getDays(year, this.conversionMonthToDate(month))
                             } 
                         />   
                     </>   

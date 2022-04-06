@@ -3,11 +3,6 @@ import TextField            from '@material-ui/core/TextField';
 
 
 export default class InputTimeField extends Component {
-  constructor(props)
-  {
-    super(props);
-  }
-
   handleTimeChange(time) 
   {
     this.props.sendValue(time);
@@ -15,20 +10,22 @@ export default class InputTimeField extends Component {
   
   render()
   {
+    const { title, defaultValue='' } = this.props;
+
     return (
       <>
         <TextField
             id="time"
-            label={this.props.title}
+            label={title}
             type="time"
-            defaultValue={this.props.defaultValue || ''}
+            defaultValue={defaultValue}
             InputLabelProps={{
                 shrink: true,
             }}
             inputProps={{
                 step: 300, // 5 min
             }}
-            onChange={(event) => this.handleTimeChange(event.target.value)}
+            onChange={ event => this.handleTimeChange(event.target.value)}
         />
       </>
     )

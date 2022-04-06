@@ -56,24 +56,26 @@ class AddEventPage extends BasicPage {
 
     render()
     {
+        const { startTime, endTime, reminderTime, title, showingNotice } = this.state;
+
         return (
             <div className='addEventContainer padding'>
                 <h2>Add event</h2>
                 <EventContainer 
-                    startTime={this.state.startTime}
-                    endTime={this.state.endTime}
+                    startTime={startTime}
+                    endTime={endTime}
                     reminderTimeList={this.reminderTimeList}
-                    reminderTime={this.state.reminderTime}
-                    title={this.state.title}
-                    setEventToStore={() => this.addEventToStore()}
+                    reminderTime={reminderTime}
+                    title={title}
+                    setEventToStore={ _ => this.addEventToStore() }
                     titleBtn='Add Event'
-                    onChangeTitle={(value) => this.setState({ title: value })}
-                    onChangeStartTime={(value) => this.setState({ startTime: value })}
-                    onChangeEndTime={(value) => this.setState({ endTime: value })}
-                    onChangeReminderTime={(value) => this.setState({ reminderTime: value })}
+                    onChangeTitle={ value => this.setState({ title: value })}
+                    onChangeStartTime={ value => this.setState({ startTime: value })}
+                    onChangeEndTime={ value => this.setState({ endTime: value })}
+                    onChangeReminderTime={ value => this.setState({ reminderTime: value })}
                 />
                 <NotificationForTime/>
-                <Notification showingNotice={this.state.showingNotice} value='Reminder added successfully!' /> 
+                <Notification showingNotice={showingNotice} value='Reminder added successfully!' /> 
             </div>
         )
     }

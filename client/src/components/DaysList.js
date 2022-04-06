@@ -8,11 +8,6 @@ import '../styles/DaysList.scss';
 
 
 export default class DaysList extends Component {
-    constructor(props)
-    {
-        super(props);
-    }
-
     get days( )
     {
         const { data, year, month } = this.props;
@@ -21,11 +16,11 @@ export default class DaysList extends Component {
 
         if ( firstday !== 0 )
         {
-            const date = new Date( this.props.year, this.props.month );
+            const date = new Date( year, month );
             
             date.setDate( date.getDate( ) - firstday );
 
-            while ( date.getMonth( ) != this.props.month )
+            while ( date.getMonth( ) != month )
             {
                 anotherMonth.push( { 
                     month : date.getMonth( ),
@@ -45,9 +40,8 @@ export default class DaysList extends Component {
 
     render() 
     {    
-        const weekdays              = [ 'Sunday', 'Monday',	'Tuesday',	'Wednesday', 'Thursday', 'Friday', 'Saturday' ];
-        const { data, year, month } = this.props;
-        const days                  = this.days;
+        const weekdays = [ 'Sunday', 'Monday',	'Tuesday',	'Wednesday', 'Thursday', 'Friday', 'Saturday' ];
+        const days     = this.days;
 
         return (
             <div>

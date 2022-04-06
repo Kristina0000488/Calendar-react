@@ -24,18 +24,21 @@ export default class DayCard extends Component {
 
     render() 
     {
+        const { key, value } = this.props;
+        const { events } = this.state;
+
         return (
-            <Paper className='dayCard' key={this.props.key}>
+            <Paper className='dayCard' key={key}>
                 <div className='dayCardNumber'>
-                    <ListItemText>{this.props.value}</ListItemText>
+                    <ListItemText>{value}</ListItemText>
                 </div>
                 <div 
                     className='dayCardEvent' 
-                    style={{ color: this.state.events.length > 0 ? 'rgba(0, 0, 0, 0.61)' : 'transparent' }}>
+                    style={{ color: events.length > 0 ? 'rgba(0, 0, 0, 0.61)' : 'transparent' }}>
                     {
-                        this.state.events && this.state.events.map((item) => {
-                            return <div key={this.props.key}>{item.title}</div> ;
-                        })
+                        events && events.map( item => {
+                            return <div key={key}>{item.title}</div> ;
+                        } )
                     }
                 </div>
             </Paper>

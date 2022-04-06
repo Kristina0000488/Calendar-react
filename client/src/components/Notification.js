@@ -4,17 +4,14 @@ import '../styles/Notification.scss';
 
 
 export default class Notification extends Component {
-  constructor(props)
-  {
-    super(props);
-  }
-
   render()
   {
+    const { showingNotice, value } = this.props;
+
     return (
       <> 
-        { this.props.showingNotice && <div className='notification'>
-            { this.props.value && this.props.value }
+        { showingNotice && <div className='notification'>
+            { value && value }
           </div>
         }
       </>

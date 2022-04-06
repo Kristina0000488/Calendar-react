@@ -16,34 +16,40 @@ class SelectList extends Component {
         }
     }
 
-    setValue(item)
+    setValue(value)
     {
-        this.setState({ value: item });
+        this.setState({ value });
     }
 
     handleChange(event) 
     {
-        this.setState({ value: event.target.value });
-        this.props.sendValue(event.target.value);
+        const value = event.target.value;
+
+        this.setState({ value });
+
+        this.props.sendValue(value);
     };
 
     render() 
-    {    
+    {
+        const { value, listData } =this.state;
+        const { title } = this.props
+
         return (
             <div>
                 {
-                    this.state.value &&  this.state.listData && <FormControl>
-                        <InputLabel id='year-label'>{this.props.title}</InputLabel>
+                    value && listData && <FormControl>
+                        <InputLabel id='year-label'>{title}</InputLabel>
                         <Select
                             labelId="year-label"
                             id="year-select"
-                            value={this.state.value}
-                            onChange={event => this.handleChange(event)}
+                            value={value}
+                            onChange={ event => this.handleChange(event) }
                         >
                             {
-                                this.state.listData.map((elem, index) => {
+                                listData.map( (elem, index) => {
                                     return <MenuItem key={index} value={elem}>{elem}</MenuItem>
-                                })
+                                } )
                             }
                         </Select>
                     </FormControl>

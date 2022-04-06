@@ -5,27 +5,36 @@ import '../styles/EventCard.scss';
 
 
 export default class EventCard extends Component {
-  constructor(props)
-  {
-    super(props);
-  }
-  
   render()
   {
+    const { 
+      startTime, 
+      endTime, 
+      reminderTimeList, 
+      reminderTime, 
+      title, 
+      setEventToStore, 
+      titleBtn, 
+      onChangeTitle, 
+      onChangeStartTime, 
+      onChangeEndTime, 
+      onChangeReminderTime 
+    } =this.props;
+
     return (
       <div className='eventCard'>
         <FormEvent
-          startTime={this.props.startTime}
-          endTime={this.props.endTime}
-          reminderTimeList={this.props.reminderTimeList}
-          reminderTime={this.props.reminderTime}
-          title={this.props.title}
-          setEventToStore={() => this.props.setEventToStore()}
-          titleBtn={this.props.titleBtn}
-          onChangeTitle={(value) => this.props.onChangeTitle(value)}
-          onChangeStartTime={(value) => this.props.onChangeStartTime(value)}
-          onChangeEndTime={(value) =>this.props.onChangeEndTime(value)}
-          onChangeReminderTime={(value) => this.props.onChangeReminderTime(value)}
+          startTime={startTime}
+          endTime={endTime}
+          reminderTimeList={reminderTimeList}
+          reminderTime={reminderTime}
+          title={title}
+          setEventToStore={ _ => setEventToStore() }
+          titleBtn={titleBtn}
+          onChangeTitle={ value => onChangeTitle(value) }
+          onChangeStartTime={ value => onChangeStartTime(value) }
+          onChangeEndTime={ value  => onChangeEndTime(value)}
+          onChangeReminderTime={ value => onChangeReminderTime(value) }
         />
       </div>
     )

@@ -15,7 +15,7 @@ class NotificationForTime extends Component {
                 { eventsStore.showNotification && 
                     <div className='notificationTime'>
                         <div>
-                            <CloseIcon onClick={ () => eventsStore.setShowNotification() } />
+                            <CloseIcon onClick={ _ => eventsStore.setShowNotification() } />
                         </div>
                         <p>Event coming soon:</p>
                         <p>"{eventsStore.showNotification[0]}"</p>

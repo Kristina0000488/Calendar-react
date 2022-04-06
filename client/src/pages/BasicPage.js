@@ -5,11 +5,6 @@ import { observer }         from 'mobx-react';
 class BasicPage extends Component {
     reminderTimeList = [0, 5, 10, 15, 20, 25, 30, 35, 40];
 
-    constructor(props)
-    {
-        super(props);  
-    }
-
     showNotice()
     {
         this.setState({ showingNotice: true });
