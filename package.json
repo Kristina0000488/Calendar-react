@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/Kristina0000488/Calendar-react/issues"
   },
-  "homepage": "https://github.com/Kristina0000488/Calendar-react#readme"
+  "homepage": "https://github.com/Kristina0000488/Calendar-react#readme",
+  "engines": {
+    "node": "15.x",
+    "npm": "7.x"
+  }
 }
