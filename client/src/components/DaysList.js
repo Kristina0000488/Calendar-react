@@ -15,28 +15,55 @@ export default class DaysList extends Component {
 
     render() 
     {    
-        const weekdays = [ 'Sunday', 'Monday',	'Tuesday',	'Wednesday', 'Thursday', 'Friday', 'Saturday' ];
+        const weekdays              = [ 'Sunday', 'Monday',	'Tuesday',	'Wednesday', 'Thursday', 'Friday', 'Saturday' ];
+        const { data, year, month } = this.props;
+        const firstday              = ( new Date( year, month, data[0] ) ).getDay( );
+        const anotherMonth          = [ ];
+
+        if ( firstday !== 0 )
+        {
+            const date = new Date( this.props.year, this.props.month );
+            
+            date.setDate( date.getDate( ) - firstday );
+
+            while ( date.getMonth( ) != this.props.month )
+            {
+                anotherMonth.push( { 
+                    month : date.getMonth( ),
+                    year  : date.getFullYear( ),
+                    day   : date.getDate( ) - 1 
+                } )
+
+                date.setDate( date.getDate( ) + 1 );
+            }            
+        }
+
+        const days = [ ...anotherMonth, ...data.map( day => new Object( { day, year, month } ) ) ];
 
         return (
             <div>
                 <div className='dayListContainer'>
                     <List className='daysList'>
                     {
-                        weekdays.map((elem, index) => <div key={`card-${index}-${index}`} className="weekday">{elem}</div>)
+                        weekdays.map( ( elem, index ) => 
+                            <div key={`card-${index}-${index}`} className="weekday">{elem}</div>
+                        )
                     }
                     </List>
                 </div>
                 <div className='dayListContainer'>
                     <List className='daysList'>
                         {
-                            this.props.data.map((elem, index) => {
-                                const date = `${this.props.year}${this.props.month}${elem}`;
-
+                            days.map( ( elem, index ) => {
+                                const { year, month, day } = elem;
+                                const date                 = `${year}${month}${day}`;
+                                
                                 return <div key={`card-${index}-${date}`}>
                                     <Link  
-                                        className='dayItem' 
+                                        disabled={ this.props.month != month }
+                                        className={ this.props.month == month ? 'dayItem':'dayItem dayItem-another-month' } 
                                         target="_blank" 
-                                        to={`/${this.props.year}/${this.props.month}/${elem}/events_of_day`} 
+                                        to={`/${year}/${month}/${day}/events_of_day`} 
                                         key={`link-${index}-${date}`} 
                                     >
                                         <ListItem 
@@ -46,7 +73,7 @@ export default class DaysList extends Component {
                                                 key={`day-card-${index}-${date}`} 
                                                 events={this.props.events} 
                                                 date={date} 
-                                                value={elem} 
+                                                value={day} 
                                             />
                                         </ListItem>
                                     </Link>
