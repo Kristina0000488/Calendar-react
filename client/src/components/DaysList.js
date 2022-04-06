@@ -31,7 +31,7 @@ export default class DaysList extends Component {
                 anotherMonth.push( { 
                     month : date.getMonth( ),
                     year  : date.getFullYear( ),
-                    day   : date.getDate( ) - 1 
+                    day   : date.getDate( ) 
                 } )
 
                 date.setDate( date.getDate( ) + 1 );
