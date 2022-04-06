@@ -13,9 +13,8 @@ export default class DaysList extends Component {
         super(props);
     }
 
-    render() 
-    {    
-        const weekdays              = [ 'Sunday', 'Monday',	'Tuesday',	'Wednesday', 'Thursday', 'Friday', 'Saturday' ];
+    get days( )
+    {
         const { data, year, month } = this.props;
         const firstday              = ( new Date( year, month, data[0] ) ).getDay( );
         const anotherMonth          = [ ];
@@ -38,7 +37,17 @@ export default class DaysList extends Component {
             }            
         }
 
-        const days = [ ...anotherMonth, ...data.map( day => new Object( { day, year, month } ) ) ];
+        return [ 
+            ...anotherMonth, 
+            ...data.map( day => new Object( { day, year, month } ) ) 
+        ]; 
+    }
+
+    render() 
+    {    
+        const weekdays              = [ 'Sunday', 'Monday',	'Tuesday',	'Wednesday', 'Thursday', 'Friday', 'Saturday' ];
+        const { data, year, month } = this.props;
+        const days                  = this.days;
 
         return (
             <div>
