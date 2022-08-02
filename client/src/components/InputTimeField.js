@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TextField            from '@material-ui/core/TextField';
 
-
+// поле для ввода времени
 export default class InputTimeField extends Component {
   handleTimeChange(time) 
   {

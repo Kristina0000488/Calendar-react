@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import '../styles/Notification.scss';
 
-
+// уведомление
 export default class Notification extends Component {
   render()
   {

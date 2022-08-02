@@ -8,7 +8,7 @@ import eventsStore          from '../store/EventsStore';
 import '../styles/CommonEventsPage.scss';
 import '../styles/App.scss';
 
-
+// страница со всеми событиями
 class EventsPage extends Component {
     render()
     {

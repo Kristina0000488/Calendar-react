@@ -10,7 +10,7 @@ import eventsStore         from '../store/EventsStore';
 import '../styles/AddEventPage.scss';
 import '../styles/App.scss';
 
-
+// Страница для добавления новых событий
 class AddEventPage extends BasicPage {
     constructor(props)
     {
@@ -25,6 +25,7 @@ class AddEventPage extends BasicPage {
         }
     }
 
+    // добавление события в store
     addEventToStore()
     {
         if (this.state.endTime > this.state.startTime && this.state.title) {

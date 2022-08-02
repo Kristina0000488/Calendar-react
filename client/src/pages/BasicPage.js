@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { observer }         from 'mobx-react';
 
-
+// Базовая страница с общими методами
 class BasicPage extends Component {
     reminderTimeList = [0, 5, 10, 15, 20, 25, 30, 35, 40];
 

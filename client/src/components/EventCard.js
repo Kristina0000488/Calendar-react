@@ -3,7 +3,7 @@ import FormEvent            from './FormEvent';
 
 import '../styles/EventCard.scss';
 
-
+// карточка события
 export default class EventCard extends Component {
   render()
   {

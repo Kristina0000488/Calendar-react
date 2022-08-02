@@ -7,7 +7,7 @@ import Button               from '@material-ui/core/Button';
 
 import '../styles/FormEvent.scss';
 
-
+// форма для добавления/редактирования события
 export default class FormEvent extends Component {  
   render()
   {

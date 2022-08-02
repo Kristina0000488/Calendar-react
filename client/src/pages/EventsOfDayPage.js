@@ -10,8 +10,9 @@ import NotificationForTime  from '../components/NotificationForTime';
 import '../styles/CommonEventsPage.scss';
 import '../styles/App.scss';
 
-
+// страница, содержащая события конкретного дня
 class EventsOfDayPage extends Component {
+    // получение событий
     getEvents()
     {
         return eventsStore.events.filter(event => event.date == this.props.date);

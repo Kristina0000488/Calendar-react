@@ -9,7 +9,7 @@ import DaysList             from './DaysList';
 import '../styles/Calendar.scss';
 import '../styles/App.scss';
 
-
+// компонент Календарь
 class Calendar extends Component {
     constructor(props)
     {
@@ -21,6 +21,7 @@ class Calendar extends Component {
         }
     }
 
+    // получение id ьусяца из списка всех месяцев
     conversionMonthToDate(month=this.state.month)
     {
         const months = date.getMonths();

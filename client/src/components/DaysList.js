@@ -6,8 +6,9 @@ import DayCard              from './DayCard';
 
 import '../styles/DaysList.scss';
 
-
+// компонент, содержащий количество дней в конкретном месяце
 export default class DaysList extends Component {
+    //получение дней
     get days( )
     {
         const { data, year, month } = this.props;
@@ -19,7 +20,7 @@ export default class DaysList extends Component {
             const date = new Date( year, month );
             
             date.setDate( date.getDate( ) - firstday );
-
+            // добавление дней из другого месяца
             while ( date.getMonth( ) != month )
             {
                 anotherMonth.push( { 

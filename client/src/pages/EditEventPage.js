@@ -10,7 +10,7 @@ import BasicPage           from './BasicPage';
 import '../styles/AddEventPage.scss';
 import '../styles/App.scss';
 
-
+//Страница для изменения события
 class EditEventPage extends BasicPage {
     constructor(props)
     {
@@ -26,7 +26,7 @@ class EditEventPage extends BasicPage {
             showingNotice: false,
         };
     }
-
+    // получение события для изменения
     getEvent()
     {
         let event = null;
@@ -39,13 +39,13 @@ class EditEventPage extends BasicPage {
 
         return event;
     }
-
+    // редактировение события
     editEvent()
     {
         eventsStore.deleteEvent(this.props.id);
         this.addEventToStore();
     }
-
+    // добавление события в store
     addEventToStore()
     {
         if (this.state.endTime > this.state.startTime && this.state.title) {

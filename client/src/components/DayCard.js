@@ -4,7 +4,7 @@ import { ListItemText }     from '@material-ui/core';
 
 import '../styles/DayCard.scss';
 
-
+// карточка День
 export default class DayCard extends Component {
     constructor(props)
     {

@@ -6,7 +6,7 @@ import eventsStore          from '../store/EventsStore';
 
 import '../styles/Notification.scss';
 
-
+// уведомление о событии
 class NotificationForTime extends Component {
     render() 
     {    

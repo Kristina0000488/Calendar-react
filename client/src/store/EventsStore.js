@@ -1,16 +1,23 @@
 import { makeAutoObservable } from "mobx";
-import { makePersistable, hydrateStore, isHydrated, isPersisting, getPersistedStore } from 'mobx-persist-store';
-import WrapedLocalStorage from '../utils/WrapedLocalStorage';
+import { 
+  makePersistable, 
+  hydrateStore, 
+  isHydrated, 
+  isPersisting, 
+  getPersistedStore 
+}                             from 'mobx-persist-store';
 
+import WrapedLocalStorage     from '../utils/WrapedLocalStorage';
 
+// store
 class EventsStore {
   storage          = WrapedLocalStorage;
   events           = [];
   showNotification = null;
 
   constructor() {
-    this.events = this.storage.getItem('EventsStore') ? this.createTasks(this.storage.getItem('EventsStore').events):this.events;
-    
+    this.events = this.storage.getItem('EventsStore') ? this.createTasks(this.storage.getItem('EventsStore').events) : this.events;
+
     makeAutoObservable(this); 
     makePersistable(this, { 
       name: 'EventsStore', 
@@ -26,6 +33,7 @@ class EventsStore {
     this.updateEvery(5000);
   }
 
+  // обновдение событий
   updateEvery(seconds=1000)
   {
     setInterval(_ => { 
@@ -56,6 +64,7 @@ class EventsStore {
     return getPersistedStore(this) ; 
   } 
 
+  // добавление нового события
   addEvent(year, month, day, date, id, startTime, endTime, title, reminderTime, task){
     const event = {
       year: year, 
@@ -73,6 +82,7 @@ class EventsStore {
     this.events.push(event);
   }
 
+  // создание задач
   createTasks(events) {
     events.forEach((item) => {
       console.log(item);
@@ -90,12 +100,12 @@ class EventsStore {
 
     return events;
   }
-
+  // получение задачи и изменение значения уведомления о начале 
   getTask(startTimeEvents, title='Event', dateTime=Date.now(), startInterval=0)
   {
     const startTimeClear      = dateTime - Date.now(); 
     const startTimeInterval   = startTimeClear - startInterval; 
-    const startTime           = startTimeInterval < 0 && startTimeClear > 0 ? startTimeClear:startTimeInterval;
+    const startTime           = startTimeInterval < 0 && startTimeClear > 0 ? startTimeClear : startTimeInterval;
 
     if (startTime > 0)
     {
@@ -106,12 +116,13 @@ class EventsStore {
         return shedule; 
     } 
   }
-
+  // изменение видимости уведомления
   setShowNotification()
   {
     this.showNotification = null;
   }
 
+  // удаление события
   deleteEvent(id) {
     const indexId = this.events.findIndex((event) => event.id == id);
 

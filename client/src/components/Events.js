@@ -5,7 +5,7 @@ import { observer }         from 'mobx-react';
 
 import '../styles/Events.scss';
 
-
+// событие в списке
 class Events extends Component {
     render()
     {
